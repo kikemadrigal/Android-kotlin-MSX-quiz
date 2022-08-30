@@ -1,6 +1,6 @@
 # Competición
 <p>MSX Quiz es una app para responder preguntas y competir en <a href="<?php echo PATHSERVER."Score/showAll" ?>">este raking</a></p>
-<p><a href="https://play.google.com/store/apps/details?id=es.tipolisto.breeds">Descarga la app de aquí</a></p>
+<p><a href="https://play.google.com/store/apps/details?id=es.tipolisto.msxquiz">Descarga la app de aquí</a></p>
 
 # Instrucciones
 <p>Una vez abierta pincha en Play y responde a las preguntas</p>
@@ -10,7 +10,7 @@
 <p>Si pinchas en el menú principal en Ranking, verás tu puntuación maxima y la posibilidad de subirla a internet, en el siguiente ejemplo ada ha conseguido 166 puntos,
 Al pinchar en "Subir máxima puntuación a internet" se te pedirá el usuario y contraseña</p>
 <img src="docs/3.png" height="500px"/>
-<p>Una vez aprobado se quedará grabado en internet, puedes ver la tabla de records o ranking pinchando en el enlace que está encima del botón o  <a href="<?php echo PATHSERVER."Score/showAll"; ?>">aquí</a></p>
+<p>Una vez aprobado se quedará grabado en internet, puedes ver la tabla de records o ranking pinchando en el enlace que está encima del botón</p>
 <img src="docs/4.png" height="500px"/>
 <h2>Sube tus propias preguntas</h2>
 <p>Si te registras en la web pinchando <a href="<?php echo PATHSERVER."Auth/register" ?>">Aquí</a></p>
