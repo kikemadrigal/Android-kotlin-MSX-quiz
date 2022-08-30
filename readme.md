@@ -15,11 +15,11 @@ Al pinchar en "Subir máxima puntuación a internet" se te pedirá el usuario y 
 <h2>Sube tus propias preguntas</h2>
 <p>Si te registras en la web pinchando <a href="<?php echo PATHSERVER."Auth/register" ?>">Aquí</a></p>
 <p>Puedes crear nuevas preguntas pinchando en "New Quiz"</p>
-<img src="docs/internet1.png" height="500px"/>
+<img src="docs/internet1.PNG" height="500px"/>
 <p>Para Gestionar tus preguntas pincha en "My Quizs"</p>
-<img src="docs/internet2.png" height="500px"/>
+<img src="docs/internet2.PNG" height="500px"/>
 <p>El autor aparece en la parte baja:</p>
-<img src="docs/internet3.png" height="500px"/>
+<img src="docs/internet3.PNG" height="500px"/>
 
 
 
