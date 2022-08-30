@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_rankingFragment"
+            app:destination="@id/rankingFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.QuizFragment"
+        android:label="QuizFragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment"
+            app:popUpTo="@id/rankingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rankingFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.RankingFragment"
+        android:label="RankingFragment" >
+        <action
+            android:id="@+id/action_rankingFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/mainFragment" />
+        <action
+            android:id="@+id/action_rankingFragment_to_loginInternetFragment"
+            app:destination="@id/loginInternetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="points"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_scoreFragment_to_rankingFragment2"
+            app:destination="@id/rankingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginInternetFragment"
+        android:name="es.tipolisto.msxquiz.view.fragments.LoginInternetFragment"
+        android:label="fragment_login_internet"
+        tools:layout="@layout/fragment_login_internet" >
+        <action
+            android:id="@+id/action_loginInternetFragment_to_rankingFragment"
+            app:destination="@id/rankingFragment"
+            app:popUpTo="@id/rankingFragment" />
+        <argument
+            android:name="maxScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

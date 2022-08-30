@@ -1,0 +1,203 @@
+--Tipos de datos en Mysql
+--Numericos: bit, boolean, smallint,int, float, double, real
+--Cadena: char, varchar, tinytext,text, longtext
+--fecha: date, datetime, timestamp time, year 
+--json: json
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `quiz`
+--
+
+-- --------------------------------------------------------
+--Antes de crear esta tabla tendrás que crear la tabla image, theme, group y users
+
+create table `quiz` (
+	`id` int(10)  NOT NULL AUTO_INCREMENT,
+	`question` text(200),
+	`answer1` varchar (100),
+	`answer2` varchar (100),
+	`answer3` varchar (100),
+	`correctAnswer` smallint (2),
+	`image` int (10),
+	`level` smallint(2),
+	`theme` int(10),
+	`group` int(10),
+	`viewed` smallint(2),
+	`date` timestamp,
+	`creator` int (11),
+	UNIQUE KEY `ID` (`id`),
+	PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+CREATE TABLE `quiz` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `question` tinytext COLLATE latin1_spanish_ci DEFAULT NULL,
+  `answer1` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `answer2` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `answer3` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `correctAnswer` smallint(2) DEFAULT NULL,
+  `image` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `level` smallint(2) DEFAULT NULL,
+  `theme` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `category` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `viewed` smallint(2) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `creator` varchar(11) COLLATE latin1_spanish_ci DEFAULT NULL,
+  UNIQUE KEY `ID` (`id`),
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+con level hacemos que vayan saliendo las preguntas cada vez más dificiles
+theme siempre será msx
+group será si es hardware, programación, juegos,etc
+viewed: se marcará a 1 si ya se ha leido
+creator será el usuario que reó la pregunta
+
+INSERT INTO `quiz` (`id`, `question`, `answer1`, `answer2`, `answer3`, `correctAnswer`, `image`, `level`, `theme`, `category`, `viewed`, `date`, `creator`) VALUES
+(1, 'Calcula el dato que debemos enviar al Puerto A8 para activar las 4 páginas de memoria RAM en el slot 3.', 'FF', 'FE', 'F0', 1, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:09:27', 186),
+(2, '¿A qué tipo de programa corresponde este LEADER y cual es el nombre del programa?\r\nDO DO DO DO DO DO DO DO DO DO 53 4F 46 54', 'Binario HOLA', 'ASCII SOFT', 'Binario SOFT', 3, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:10:40', 186),
+(3, 'En vistas del siguiente LEADER: ¿Cuáles son las direcciones de Inicio, Fin y Ejecución del programa? 00 88 00 C8 00 88', 'inicio 8000, fin C800, ejecución 8000', 'inicio c800, fin 8000, ejecución C800', 'inicio 8000, fin 8000, ejecución C800', 1, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:11:47', 186),
+(4, '¿En basic que signo se utiliza para separar 2 instrucciones dentro de la misma línea?', 'Espacio en blanco ( )', 'Punto y coma (;)', 'Dos puntos (:)', 3, NULL, NULL, NULL, NULL, NULL, '2022-08-07 00:12:32', 186),
+(5, 'Indica la lista que no contiene todos juegos de Konami', 'Sky jaguar, Break Shot, Salamander', 'Hyper Rally, Athletic Land, Golvellius', 'Time Pilot, Mah-Jon, Knightmare', 2, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:13:24', 186),
+(6, '¿Puede un registro de 16 bits cargarse con un dato de 8 bits?', 'No', 'Si pero se tendrá que inicialir el otro registro de 8 bits aparejado  a 0', 'Si', 2, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:14:46', 186),
+(7, '¿Qué significa LIFO?', '(List In - First Out): Primero en salir en la lista', '(First Out - Last In): Primero en salir - Último en entrar', '(Last In - First Out): Primero en entrar - Último en salir', 3, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:25:32', 186),
+(8, '¿Cual es el modo de acceso de una PILA?.', '(Last In, First Out): último en entrar, primero en salir.', 'Se recarga', 'Se recuperan todos los datos', 1, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:26:12', 186),
+(9, '¿Quien es el programador del juego Ghost park?.', 'Juan Miralles', 'Juan Morales', 'Tadeo Jones', 2, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:26:51', 186),
+(10, '¿Quien compuso la música del juego Tamari?', 'Misimo Nagazaki', 'Toni Galvez', 'Gabriel Caffarena', 1, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:28:00', 186),
+(11, '¿Que es el formato TSX?', 'Contiene datos comprimidos con pletter', 'Es un superconjunto de tzx, son mejores que los .cas y conserva los archivos como los originales', 'Representan imágenes de laser discs', 2, NULL, NULL, 'MSX', NULL, NULL, '2022-08-07 00:34:33', 186);
+
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `image`
+--
+
+-- --------------------------------------------------------
+
+
+CREATE TABLE `multimedia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50),
+  `path` varchar(100),
+  `date` timestamp,
+  `user` int(11),
+  `idQuiz` int(11) DEFAULT '1',
+  UNIQUE KEY `ID` (`id`),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user`) REFERENCES users(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+  
+  
+  FOREIGN KEY (`idQuiz`) REFERENCES quiz(`id`)
+INSERT INTO `multimedia` (`id`, `name`, `path`, `date`, `user`, `idQuiz`) VALUES ('0', 'Sin image', NULL, current_timestamp(), NULL, '1');
+
+con forenkey idquiz hacemos que cuando se borre la pregunta se borre la foto
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `scores`
+--
+-- el theme es el tema informática, MSX, 8 bits, etc 
+-- --------------------------------------------------------
+
+
+create table `scores`(
+	`id` int(10)  NOT NULL AUTO_INCREMENT,
+	`name` varchar(100),
+	`score` int(10),
+	`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	UNIQUE KEY `ID` (`id`),
+	PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `theme`
+--
+-- el theme es el tema informática, MSX, 8 bits, etc 
+-- --------------------------------------------------------
+create table `themes`(
+	`id` int(10)  NOT NULL AUTO_INCREMENT,
+	`title` varchar(100),
+	`date` timestamp,
+	`creator` int (11),
+	UNIQUE KEY `ID` (`id`),
+	PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `group`
+--
+
+-- --------------------------------------------------------
+create table `category`(
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`title` varchar(100),
+	`date` timestamp,
+	`creator` int (11),
+	UNIQUE KEY `ID` (`id`),
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+
+-- --------------------------------------------------------
+
+--
+-- 			Estructura de tabla para la tabla `users`
+--
+
+-- --------------------------------------------------------
+
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `role` smallint(4) UNSIGNED NOT NULL DEFAULT '0',
+  `email` varchar(100) NOT NULL,
+  `realName` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
+  `web` varchar(100) NOT NULL,
+  `validate` varchar(20) NOT NULL,
+  `counter` int(100) NOT NULL,
+  `date` varchar(500) NOT NULL,
+  `view` int(11) NOT NULL,
+  `token` varchar(100) NOT NULL,
+  `observations` longtext NOT NULL,
+  UNIQUE KEY `ID` (`id`),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci; 
+
+
+--
+-- BHorrando la tabla `usuarios`
+-- Para poder borrar la tabla users primero tendrás que borrar las tablas game, gameUsers y multimedia que tienen el id como clave foranea
+-- Drop table users;
+ 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `role`, `email`, `realName`, `surname`, `web`, `validate`, `counter`, `date`, `view`, `token`, `observations`) VALUES
+(92, 'adeline', '1c558dfd6f4148767d40386fa7b59c18e3b8627e', 1, 'ada@gestorwebs.tipolisto.es', '', '', '', '1', 0, '', 1, '', ''),
+(96, 'ada', '1c558dfd6f4148767d40386fa7b59c18e3b8627e', 3, 'pepi@gestorwebs.tipolisto.es', '', '', '', '1', 0, '', 1, '', ''),
+(98, 'lucas', '8b08a87c980d75add89798754899184c196b1a50', 3, 'lucas@gmail.com', '', '', '', '1', 0, '', 1, '', ''),
+(185, 'perico', '3885b8a5e5c5087b42086a494b7cc26210721602', 3, 'kikemadrigal@lucas.com', 'Enrique', 'Madrigal', 'tipolisto.es', '1', 0, '11/01/2018', 1, '', '41434143'),
+(186, 'murcia', '58746b54a4c7e856562f17e9bc6d2a07861da891', 3, 'kikemadrigal@hotmail.com', ' ', ' ', ' ', '1', 0, '29/04/2022', 1, '', 'clave generada por defecto');
+
+--delete from users;
+
+--
+-- Modificando la estructura de la tabla
+--
+--ALTER TABLE `usuarios`
+--  ADD PRIMARY KEY (`idusuario`),
+--  ADD UNIQUE KEY `ID` (`idusuario`);
+--
+--ALTER TABLE `usuarios`
+--  MODIFY `idusuario` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+--COMMIT;

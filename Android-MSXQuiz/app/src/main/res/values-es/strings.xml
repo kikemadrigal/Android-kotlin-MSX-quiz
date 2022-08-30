@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">MSX Quiz</string>
+    <string name="back">Volver</string>
+    <string name="MSX_quiz_logo">MSX Quiz Logo</string>
+
+    <!--Main fragment-->
+    <string name="main_logo">MSX BASIC version 2.1\nCopyright 1986 by Microsoft\n\nDisk BASIC version 1.0\nOk</string>
+    <string name="play">Jugar</string>
+    <string name="ranking">Ranking</string>
+    <string name="Settings">Configuración</string>
+
+    <!--Quiz fragment-->
+    <string name="points">Puntos:</string>
+    <string name="attempts">Intentos:</string>
+    <string name="author">Autor:</string>
+    <string name="We_had_trouble_getting_the_list_of_questions_please_try_again">Tuvimos problemas para obtener la lista de preguntas, vuelva a intentarlo</string>
+
+    <!--Fragment ranking-->
+    <string name="see_table_of_records_on_the_internet">Ver tabla de records en internet:</string>
+    <string name="upload_your_score_to_quiz_tipolisto_es_nyou_will_need_to_be_registered">Sube tu puntuación internet, necesitas estar registrado</string>
+    <string name="route_register">https://quiz.tipolisto.es/index/Auth/register</string>
+    <string name="route_show_all_quizs">https://quiz.tipolisto.es/index/Score/showAll</string>
+    <string name="upload">Subir</string>
+
+    <!--Score fragment-->
+    <string name="your_score">Puntuación</string>
+    <string name="your_user">Tu usuario</string>
+    <string name="ok">Ok</string>
+
+    <!--Settings fragment-->
+    <string name="settings">Configuración</string>
+    <string name="music_on_off">Música on/off</string>
+    <string name="theme_dark_on_off">Tema oscuro on/off</string>
+    <string name="web">Web</string>
+    <string name="route_quiz">https://quiz.tipolisto.es/</string>
+    <string name="contact_more_information">Contacto / más información</string>
+    <string name="route_contact">https://quiz.tipolisto.es/index/About</string>
+    <string name="route_forum">https://quiz.tipolisto.es/index/Forum</string>
+    <string name="forum">foro</string>
+
+    <!--loginInternetFragment-->
+    <string name="the_user_name_does_not_exist">El nombre de usuario no existe.</string>
+    <string name="New_record_saved_in_quiz_tiposto_es">Nuevo record guardado en quiz.tipolisto.es</string>
+    <string name="The_user_s_password">La clave del usuario</string>
+    <string name="is_incorrect">es incorrecta</string>
+    <string name="The_user_needs_to_be_validated_to_continue_go_to">El usuario necesita ser validado para continuar, vaya a</string>
+    <string name="There_was_a_problem_with_the_database">Hubo un problema con la base de datos</string>
+    <string name="Another_saved_high_score_found">Se ha encontrado guardada otra puntuación máxima guardada</string>
+    <string name="Enter_the_required_fields">Introduce los campos obligatorios</string>
+
+    <!--Quiz fragment-->
+    <string name="Are_you_sure_you_want_to_finish_the_game">¿Esta seguro que desea termina el juego?</string>
+
+    <!--Score fragment-->
+    <string name="Please_write_a_name">Por favor, escribe un nombre</string>
+
+</resources>

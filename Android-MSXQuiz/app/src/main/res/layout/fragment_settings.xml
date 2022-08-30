@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".view.fragments.SettingsFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/settings"
+
+            android:textAlignment="center"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchSettingsMusicOnOff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/white"
+            android:text="@string/music_on_off" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchSettingsDarkTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/theme_dark_on_off"
+            android:textColor="@color/white" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:layout_marginTop="50dp"
+            android:autoLink="all"
+            android:text="@string/web" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:autoLink="all"
+            android:text="@string/route_quiz" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:autoLink="all"
+            android:text="@string/contact_more_information" />
+        <TextView
+            android:id="@+id/textViewWebSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:autoLink="all"
+            android:text="@string/route_contact" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:autoLink="all"
+            android:text="@string/forum" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:autoLink="all"
+            android:text="@string/route_forum" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:text="@string/back"
+            android:layout_marginTop="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/button_back"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

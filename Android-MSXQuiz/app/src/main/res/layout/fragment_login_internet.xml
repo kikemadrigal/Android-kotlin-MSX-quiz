@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/background_main"
+        tools:context=".view.fragments.LoginInternetFragment">
+        <TextView
+            android:id="@+id/tvUserLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_your_score_to_quiz_tipolisto_es_nyou_will_need_to_be_registered"
+            android:textAlignment="center"
+          />
+        <TextView
+            android:id="@+id/textViewWebSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+
+            android:textAlignment="center"
+            android:autoLink="all"
+            android:text="@string/route_register" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:backgroundTint="@color/background_main"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="0dp"
+            android:outlineAmbientShadowColor="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/etUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="User"
+                    tools:text="User"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"/>
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    tools:text="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"/>
+
+                <EditText
+                    android:id="@+id/etMaxScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="Score"
+                    tools:text="Score"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_table_of_records_on_the_internet"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textAlignment="center"
+            android:autoLink="all"
+            android:text="@string/route_show_all_quizs" />
+        <Button
+            android:id="@+id/btUploadSore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload"
+            android:layout_marginTop="100dp"
+            style="@style/button_back"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:text="@string/back"
+            android:layout_marginTop="10dp"
+            style="@style/button_back"/>
+    </LinearLayout>
+</ScrollView>
