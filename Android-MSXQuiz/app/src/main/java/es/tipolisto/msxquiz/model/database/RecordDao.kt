@@ -30,14 +30,14 @@ interface RecordDao {
 
 
     @Insert
-    fun insertAll(vararg users: RecordEntity?)
+    fun insertAll(vararg users: RecordEntity)
 
     @Update
-    fun update(user: RecordEntity?)
+    fun update(user: RecordEntity)
 
 
     @Delete
-    fun delete(user: RecordEntity?)
+    fun delete(user: RecordEntity)
 
     //Borramos todos los que sean menores de una puntuación
     @Query("DELETE FROM RecordEntity WHERE SCORE<(:score)")
