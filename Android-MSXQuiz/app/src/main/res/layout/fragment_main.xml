@@ -62,11 +62,12 @@
 
     <TextView
         android:id="@+id/ivLogoMainFood"
-        android:text="color      auto       goto       list       run"
+        android:text="@string/route_quiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20dp"
+        android:autoLink="all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
