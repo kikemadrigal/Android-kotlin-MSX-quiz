@@ -2,5 +2,6 @@ app/config/env.php
 media/users/user186/*.*
 .DS_Store
 .idea/
+.vscode/ftp-sync.json
 
 
