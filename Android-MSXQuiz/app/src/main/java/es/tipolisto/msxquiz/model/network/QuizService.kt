@@ -3,25 +3,33 @@ package es.tipolisto.msxquiz.model.network
 
 import es.tipolisto.msxquiz.model.*
 import retrofit2.Call
-import retrofit2.http.*
+
+import retrofit2.Response
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Url
 
 
 interface QuizService {
 
-    @GET("getQuizModelList")
-    //http://api.quiz.tipolisto.es/getQuizModelList
+
+    //https://quiz.tipolisto.es/api/getQuizModelList.php
     //fun getQuizList(@Url url:String):Call<List<Quiz>>
-    fun getQuizList():Call<List<Quiz>>
+    @GET("getQuizModelList.php")
+    suspend fun getQuizList(): Response<List<Quiz>>
 
-    @GET("")
-    fun getImage(@Url url:String):Call<Image>
+    @GET("getImage.php/{idImage}")
+    suspend fun getImage(@Path ("idImage") idImage:String): Response<Image>
 
-    @POST("setScore")
+    @POST("setScore.php")
     @FormUrlEncoded
-    fun saveScore(
+    suspend fun saveScore(
         @Field("user") name: String,
         @Field("password") password: String,
         @Field("score") score: Int
-    ): Call<String>
+    ): Response<String>
 
 }

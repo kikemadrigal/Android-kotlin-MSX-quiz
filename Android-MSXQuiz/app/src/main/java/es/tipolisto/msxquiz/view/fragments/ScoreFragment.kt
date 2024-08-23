@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,6 @@ class ScoreFragment : Fragment() {
     private val rankingViewModel : RecordViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View? {
         binding= FragmentScoreBinding.inflate(inflater,container, false)
-
         return binding.root
     }
 
@@ -40,12 +40,35 @@ class ScoreFragment : Fragment() {
         points= ScoreFragmentArgs.fromBundle(requireArguments()).points
         //Log.d("Mensaje", points.toString())
         binding.tvScore.text = points.toString()
+        rankingViewModel.seeProgressBarchLiveData.observe(requireActivity()){
+            if(it){
+                binding.progressbar.visibility=View.VISIBLE
+            }else{
+                binding.progressbar.visibility=View.GONE
+            }
+        }
+
+
+        binding.buttonRanking.setOnClickListener{
+            quizListener.playButton("click")
+            if (binding.etRankingName.text.isNotEmpty()){
+                val name =binding.etRankingName.text.toString()
+                //TODO: borrar a partir de la 10 puntuación maxima todos los registros
+                Log.d("Mensaje", "vamos a añadir a "+name+" "+points.toString())
+                rankingViewModel.addScore(name, points)
+                rankingViewModel.updateRanking()
+                Handler(Looper.getMainLooper()).postDelayed({ navController.navigate(R.id.action_scoreFragment_to_rankingFragment) },1000)
+            }else{
+                showToast(requireContext(),getString(R.string.Please_write_a_name))
+            }
+        }
         //Mostramos un menú u otro según si es un nuevo record
         recordViewModel.maxPointsLiveData.observe(requireActivity()) { maxPointsInTable ->
-            if (maxPointsInTable < points) initButtonWithEditText()
-            else {
+            //if (maxPointsInTable < points) initButtonWithEditText()
+            if (maxPointsInTable > points) {
                 binding.etRankingName.visibility = View.GONE
                 binding.buttonRanking.setOnClickListener {
+                    //Log.d("Mensaje", "Pulsado")
                     startMainFragment()
                 }
             }
@@ -60,24 +83,10 @@ class ScoreFragment : Fragment() {
         } catch (castException: ClassCastException) { }
     }
 
-    private fun initButtonWithEditText() {
-        binding.buttonRanking.setOnClickListener{
-            quizListener.playButton("click")
-            if (binding.etRankingName.text.isNotEmpty()){
-                val name =binding.etRankingName.text.toString()
-                //TODO: borrar a partir de la 10 puntuación maxima todos los registros
-                rankingViewModel.addScore(name, points)
-                rankingViewModel.updateRanking()
-                Handler(Looper.getMainLooper()).postDelayed({ startRankingFragment() },1000)
-            }else{
-                showToast(requireContext(),getString(R.string.Please_write_a_name))
-            }
-        }
-    }
 
-    private fun startRankingFragment(){
-        navController.navigate(R.id.action_scoreFragment_to_rankingFragment2)
-    }
+    /*private fun startRankingFragment(){
+        navController.navigate(R.id.action_scoreFragment_to_rankingFragment)
+    }*/
     private fun startMainFragment(){
         navController.navigate(R.id.action_scoreFragment_to_mainFragment)
     }

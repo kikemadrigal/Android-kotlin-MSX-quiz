@@ -11,10 +11,6 @@ import es.tipolisto.msxquiz.R
 import es.tipolisto.msxquiz.model.database.RecordEntity
 import es.tipolisto.msxquiz.util.Constants
 
-/*
-** Coded by David Montes on 21/03/2022.
-** https://github.com/davidthar
-*/
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 

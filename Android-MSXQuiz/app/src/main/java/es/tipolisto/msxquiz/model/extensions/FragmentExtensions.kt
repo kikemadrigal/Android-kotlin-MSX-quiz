@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 
 
-fun Fragment.showToast(context: Context, text : String, duration : Int = Toast.LENGTH_SHORT){
+fun Fragment.showToast(context: Context, text : String, duration : Int = Toast.LENGTH_LONG){
     Toast.makeText(context, text, duration).show()
 }
 

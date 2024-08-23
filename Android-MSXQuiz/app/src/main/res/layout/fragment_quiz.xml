@@ -20,41 +20,46 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center">
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N: "
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/tvNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:layout_marginHorizontal="5dp"
-                tools:text="1522" />
+                tools:text="1522"
+                android:textSize="30sp"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/points" />
+                android:text="@string/points"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/tvPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-
                 android:layout_marginHorizontal="5dp"
-                tools:text="1522" />
+                tools:text="1522"
+                android:textSize="30sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/attempts"
+                android:textSize="30sp"
                 />
             <TextView
                 android:id="@+id/tvFails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                tools:text="1522" />
+                tools:text="1522"
+                android:textSize="30sp"/>
         </LinearLayout>
 
 
@@ -71,7 +76,24 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivImage"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonReload"
+            android:text="Reload"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"/>
         <TextView
             android:id="@+id/tvTimer"
             android:layout_width="80dp"
@@ -81,7 +103,7 @@
             android:gravity="center"
             android:textSize="35sp"
             android:textColor="@color/text_color_darker"
-            app:layout_constraintTop_toBottomOf="@id/ivImage"
+            app:layout_constraintTop_toBottomOf="@id/buttonReload"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

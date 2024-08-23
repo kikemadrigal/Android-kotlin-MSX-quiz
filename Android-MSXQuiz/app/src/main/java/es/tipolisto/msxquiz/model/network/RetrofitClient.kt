@@ -1,15 +1,23 @@
 package es.tipolisto.msxquiz.model.network
 
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient() {
-    fun getRetrofit():Retrofit{
-        return Retrofit.Builder()
-            .baseUrl("http://api.quiz.tipolisto.es/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    companion object{
+        fun getRetrofit():Retrofit{
+            return Retrofit.Builder()
+                .baseUrl("https://quiz.tipolisto.es/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+        fun getRetrofitApi():QuizService{
+            val api = getRetrofit().create(QuizService::class.java)
+            return api
+        }
     }
+
     //     .baseUrl("http://quiz.tipolisto.es/index/Api/")
     //.baseUrl("https://dog.ceo/api/breed/")
     /*fun getAllQuiz(){

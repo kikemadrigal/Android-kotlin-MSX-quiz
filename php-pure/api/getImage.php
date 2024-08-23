@@ -12,12 +12,13 @@ $ruta=$componentesUrl["path"];
 $partesRuta=explode("/", $ruta);
 //echo var_dump($partesRuta);
 $nparams=sizeof($partesRuta);
-if($partesRuta[1]=="getImage"){
+//echo "nparams: ".$nparams."<br>";
+if($partesRuta[2]=="getImage.php"){
     $image=null;
     $basededatos= new MysqliClient();
     $basededatos->conectar_mysql();
     //tYPES=1 images, audios, videos
-    $consulta  = "SELECT * FROM multimedia WHERE id='".$partesRuta[2]."'";
+    $consulta  = "SELECT * FROM multimedia WHERE id='".$partesRuta[3]."'";
     $resultado=$basededatos->ejecutar_sql($consulta);
     while ($linea = mysqli_fetch_array($resultado)) 
     {

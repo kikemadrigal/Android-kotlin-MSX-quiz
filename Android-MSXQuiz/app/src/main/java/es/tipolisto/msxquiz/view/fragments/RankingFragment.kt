@@ -30,6 +30,7 @@ class RankingFragment : Fragment() {
     private val recordViewModel : RecordViewModel by viewModels()
     private var maxScore:Int =0
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= FragmentRankingBinding.inflate(inflater,container, false)
         return binding.root
@@ -48,12 +49,13 @@ class RankingFragment : Fragment() {
         }
         //Obtenemos la lista de records con el viewModel
         //var listRecords= emptyList<RecordEntity>()
-        /*recordViewModel.listRescordsMutableLiveData.observe(requireActivity(),{
-            //listRecords=it
+        //loginInternetViewModel.seeProgressBarchLiveData.observe(requireActivity()){
+        /*recordViewModel.listRescordsMutableLiveData.observe(requireActivity()){
+            listRecords=it
             fullRecyclerView(it)
-            Log.d(Constants.TAG,"Obtenidos dentro rankinfragment ${it.size.toString()}")
-        })
-        recordViewModel.getAll10Records()*/
+            //Log.d(Constants.TAG,"Obtenidos dentro rankinfragment ${it.size.toString()}")
+        }*/
+        recordViewModel.getAll10Records()
         //Cando cambie el maxScore del viewModel actualizamos este
         recordViewModel.maxPointsLiveData.observe(requireActivity()) {
             maxScore = it

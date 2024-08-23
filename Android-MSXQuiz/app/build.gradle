@@ -13,8 +13,8 @@ android {
         applicationId "es.tipolisto.msxquiz"
         minSdk 26
         targetSdk 34
-        versionCode 6
-        versionName "3.3"
+        versionCode 9
+        versionName "3.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,10 +58,14 @@ dependencies {
     //Para mandar argumentos entre fragments de una manera segura
     //implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
 
-    //Para dibujar fotos de internet
+    //Para dibujar fotos de internet tenemos coil o Picasso
+    /*
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    */
+    //https://square.github.io/picasso/#download
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     /***Coorrutinas****/
     // Fragment

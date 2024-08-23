@@ -10,8 +10,8 @@
     <string name="Settings">Configuración</string>
 
     <!--Quiz fragment-->
-    <string name="points">Puntos:</string>
-    <string name="attempts">Intentos:</string>
+    <string name="points"> Puntos: </string>
+    <string name="attempts"> Intentos: </string>
     <string name="author">Autor:</string>
     <string name="We_had_trouble_getting_the_list_of_questions_please_try_again">Tuvimos problemas para obtener la lista de preguntas, vuelva a intentarlo</string>
 

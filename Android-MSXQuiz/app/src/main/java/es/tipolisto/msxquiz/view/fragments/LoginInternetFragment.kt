@@ -2,6 +2,7 @@ package es.tipolisto.msxquiz.view.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import es.tipolisto.msxquiz.databinding.FragmentLoginInternetBinding
 import es.tipolisto.msxquiz.model.extensions.createDialog
 import es.tipolisto.msxquiz.model.extensions.showDialogProblemGetDataInternet
 import es.tipolisto.msxquiz.model.extensions.showToast
+import es.tipolisto.msxquiz.util.Constants
 import es.tipolisto.msxquiz.view.interfaces.QuizListener
 import es.tipolisto.msxquiz.viewModel.LoginInternetViewModel
 
@@ -32,6 +34,13 @@ class LoginInternetFragment : Fragment() {
         val maxScore = LoginInternetFragmentArgs.fromBundle(requireArguments()).maxScore
         if(maxScore!=null){
             binding.etMaxScore.setText(maxScore.toString())
+        }
+        loginInternetViewModel.seeProgressBarchLiveData.observe(requireActivity()){
+            if(it){
+                binding.progressBar.visibility=View.VISIBLE
+            }else{
+                binding.progressBar.visibility=View.GONE
+            }
         }
         val name = binding.etUser.text.toString()
         val password=binding.etPassword.text.toString()
@@ -70,7 +79,7 @@ class LoginInternetFragment : Fragment() {
                 showToast(requireContext(),getString(R.string.Enter_the_required_fields), Toast.LENGTH_LONG)
             }else {
                 loginInternetViewModel.saveScore(name, password, maxScore)
-                //Log.d(Constants.TAG,"Clic en upload internet login")
+                Log.d(Constants.TAG,"Clic en upload internet login")
             }
         }
 

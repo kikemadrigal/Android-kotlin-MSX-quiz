@@ -58,12 +58,22 @@
 
 
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llScore"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/buttonRanking"
             android:text="@string/ok"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llScore"
+            app:layout_constraintTop_toBottomOf="@+id/progressbar"
             app:layout_constraintBottom_toBottomOf="parent"
             style="@style/button_back"/>
 

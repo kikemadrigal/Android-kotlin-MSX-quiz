@@ -28,7 +28,7 @@ while ($linea = mysqli_fetch_array($resultado))
 $basededatos->desconectar();
 
 
-$data= json_encode($quizs);  
-echo $data."\n";
+echo json_encode($quizs);  
+
 
 ?>

@@ -76,6 +76,5 @@
         }
     }
     $basededatos->desconectar();
-    $data= json_encode($mensaje);  
-    echo $data."\n";
+    echo json_encode($mensaje);  
 ?>

@@ -12,8 +12,8 @@
 
 
     <!--Quiz fragment-->
-    <string name="points">Points:</string>
-    <string name="attempts">Attempts:</string>
+    <string name="points"> Points: </string>
+    <string name="attempts"> Attempts: </string>
     <string name="author">Author:</string>
     <string name="We_had_trouble_getting_the_list_of_questions_please_try_again">We had trouble getting the list of questions, please try again</string>
 

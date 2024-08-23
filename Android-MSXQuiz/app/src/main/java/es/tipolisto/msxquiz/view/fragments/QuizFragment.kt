@@ -18,7 +18,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.bumptech.glide.Glide
+
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import es.tipolisto.msxquiz.R
 import es.tipolisto.msxquiz.databinding.FragmentQuizBinding
 import es.tipolisto.msxquiz.model.Quiz
@@ -27,6 +29,7 @@ import es.tipolisto.msxquiz.util.Constants
 import es.tipolisto.msxquiz.util.Util
 import es.tipolisto.msxquiz.view.interfaces.QuizListener
 import es.tipolisto.msxquiz.viewModel.QuizViewModel
+import java.lang.Exception
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -41,7 +44,7 @@ class QuizFragment : Fragment(){
     private lateinit var arrayAnswerButtons : Array<Button>
 
     private var correctAnswer = 0
-    private var questionNumber = 1
+    //private var questionNumber = 1
     private var totalPoints = 0
     private var fails=5
 
@@ -53,10 +56,10 @@ class QuizFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController= Navigation.findNavController(view)
-
+        quizViewModel.getQuiz()
         //Utilizamos un array para recorrer los botones ya que queremos cambiarles el texto ty aignarles estilos
         arrayAnswerButtons = arrayOf(binding.btnAnswer1, binding.btnAnswer2, binding.btnAnswer3)
-
+        //quizViewModel.getQuiz()
 
         //Cada vez que llamemos a getQuiz se llamará a la función setQuestion
         quizViewModel.quizProviderLiveData.observe(requireActivity()) {
@@ -68,19 +71,41 @@ class QuizFragment : Fragment(){
             else
                 setQuestion(it)
         }
-
+        binding.buttonReload?.setOnClickListener {
+            quizViewModel.getQuiz()
+        }
         //Cada vez que se pida una imagen la asignaremos al ivImage
         quizViewModel.imageInternetLiveData.observe(requireActivity()) {
             Log.d(Constants.TAG,"peticion cambio imagen recibida")
             //Pero solo si hay internet
             //https://quiz.tipolisto.es/media/users/user186/direcciones.PNG
             var urlImage = "https://quiz.tipolisto.es/" + it.path
+            /*
             Glide.with(binding.root.context)
                 .load(urlImage)
                 .into(binding.ivImage)
+            */
+            Picasso.get()
+                .load(urlImage)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.without_image)
+                .into(binding.ivImage, object : Callback {
+                    override fun onSuccess() {
+                        if (binding.progressBar != null) {
+                            binding.progressBar?.setVisibility(View.GONE)
+                            Log.d("Message", "Imagen cargada")
+                            binding.buttonReload?.visibility=View.GONE
+                        }
+                    }
 
+                    override fun onError(e: Exception?) {
+                        binding.progressBar?.setVisibility(View.GONE)
+                        binding.buttonReload?.visibility=View.VISIBLE
+                        binding.ivImage.setImageResource(R.drawable.without_image)
+                        quizViewModel.getQuiz()
+                    }
+                })
         }
-
     }
     override fun onResume() {
         super.onResume()
@@ -208,8 +233,8 @@ class QuizFragment : Fragment(){
                             quizViewModel.getQuiz()
                             arrayAnswerButtons.forEach { it.clear() }
                             setCountDown()
-                            questionNumber++
-                            binding.tvNumber.text = questionNumber.toString()
+                            //questionNumber++
+                            //binding.tvNumber.text = questionNumber.toString()
                         }else{
                             showDialogProblemGetDataInternet(requireActivity())
                         }
