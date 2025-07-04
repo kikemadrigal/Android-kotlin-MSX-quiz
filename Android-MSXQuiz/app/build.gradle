@@ -1,20 +1,21 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    //id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     //generar el código de Kotlin adecuado para módulos
     id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "es.tipolisto.msxquiz"
         minSdk 26
-        targetSdk 34
-        versionCode 9
-        versionName "3.6"
+        targetSdk 36
+        versionCode 10
+        versionName "3.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     buildFeatures{
@@ -41,20 +42,20 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.13.1'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
     //androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Glide para mostrar imagánes de internet: https://github.com/bumptech/glide
     //Para hacer pruebas podemos utlizar esta web: https://loremflickr.com/
 
 
     // Componente navegación
-    implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
-    implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
     //Para mandar argumentos entre fragments de una manera segura
     //implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
 
@@ -65,32 +66,32 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     */
     //https://square.github.io/picasso/#download
-    implementation 'com.squareup.picasso:picasso:2.8'
+    implementation libs.picasso
 
     /***Coorrutinas****/
     // Fragment
-    implementation "androidx.fragment:fragment-ktx:1.8.2"
+    implementation libs.androidx.fragment.ktx
     // Activity
-    implementation "androidx.activity:activity-ktx:1.9.1"
+    implementation libs.androidx.activity.ktx
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4"
+    implementation libs.androidx.lifecycle.viewmodel.ktx
     // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.4"
+    implementation libs.androidx.lifecycle.livedata.ktx
 
     //Timber Countdown
-    implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation libs.timber
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation libs.retrofit
+    implementation libs.converter.gson
 
     //Room
-    implementation "androidx.room:room-runtime:2.6.1"
-    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    implementation libs.androidx.room.runtime
+    annotationProcessor libs.androidx.room.compiler
     // To use Kotlin annotation processing tool (kapt)
-    kapt "androidx.room:room-compiler:2.6.1"
-
+    //kapt "androidx.room:room-compiler:2.6.1"
+    ksp libs.androidx.room.compiler
     //CardView
-    implementation "androidx.cardview:cardview:1.0.0"
+    implementation libs.androidx.cardview
 
 }
